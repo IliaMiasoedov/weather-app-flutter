@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
+// (WState - means Widget State)
 abstract class WState extends Equatable {
   @override
   List<Object> get props => [];
