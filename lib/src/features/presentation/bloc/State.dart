@@ -1,18 +1,17 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:weatherapp/src/features/data/model/WeatherResponse.dart';
 
-abstract class HomeState extends Equatable {
+abstract class WState extends Equatable {
   @override
   List<Object> get props => [];
 }
 
-class Empty extends HomeState {}
+class Empty extends WState {}
 
-class Loading extends HomeState {}
+class Loading extends WState {}
 
-class Loaded extends HomeState {
-  final WeatherResponse data;
+class Loaded<T> extends WState {
+  final T data;
 
   Loaded({@required this.data});
 
@@ -20,7 +19,7 @@ class Loaded extends HomeState {
   List<Object> get props => [data];
 }
 
-class Error extends HomeState {
+class Error extends WState {
   final String message;
 
   Error({this.message});

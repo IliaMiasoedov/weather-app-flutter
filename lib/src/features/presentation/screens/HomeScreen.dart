@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weatherapp/injectionContainer.dart';
+import 'package:weatherapp/src/features/data/model/WeatherResponse.dart';
 import 'package:weatherapp/src/features/presentation/bloc/HomeBloc.dart';
-import 'package:weatherapp/src/features/presentation/bloc/HomeState.dart';
+import 'package:weatherapp/src/features/presentation/bloc/State.dart';
 import 'package:weatherapp/src/res/Dimens.dart';
 import 'package:weatherapp/src/res/Strings.dart';
 
@@ -40,12 +41,12 @@ class HomeScreenState extends State<HomeScreen> {
   Widget body() {
     return BlocProvider(
         create: (_) => bloc,
-        child: BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
+        child: BlocBuilder<HomeBloc, WState>(builder: (context, state) {
           return mapStateToWidget(state);
         }));
   }
 
-  Widget mapStateToWidget(HomeState state) {
+  Widget mapStateToWidget(WState state) {
     if (state is Error) {
       return Column(
         children: <Widget>[
@@ -53,7 +54,7 @@ class HomeScreenState extends State<HomeScreen> {
         ],
       );
     } else if (state is Loaded) {
-      final data = state.data;
+      final data = state.data as WeatherResponse;
       return Column(
         children: <Widget>[
           centeredTextWidget(data.location.name, Dimens.mediumSize),
