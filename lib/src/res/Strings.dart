@@ -11,6 +11,7 @@ class Strings {
   static const saintPetersburgQuery = 'Saint-Petersburg';
   static const moscowQuery = 'Moscow';
   static const newYorkQuery = 'New York';
+  static const kharkovQuery = 'Kharkov,ua';
   static const celsiusMark = '°C';
 
   //server error messages

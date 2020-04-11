@@ -80,7 +80,8 @@ class HomeScreenState extends State<HomeScreen> {
     final cities = [
       Strings.saintPetersburgQuery,
       Strings.moscowQuery,
-      Strings.newYorkQuery
+      Strings.newYorkQuery,
+      Strings.kharkovQuery
     ];
     return PopupMenuButton<String>(
       onSelected: (String city) => {bloc.add(city)},
