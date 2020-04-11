@@ -41,11 +41,11 @@ class HomeScreenState extends State<HomeScreen> {
     return BlocProvider(
         create: (_) => bloc,
         child: BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
-          return toWidget(state);
+          return mapStateToWidget(state);
         }));
   }
 
-  Widget toWidget(HomeState state) {
+  Widget mapStateToWidget(HomeState state) {
     if (state is Error) {
       return Column(
         children: <Widget>[
