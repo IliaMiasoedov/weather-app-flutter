@@ -20,7 +20,7 @@ class Strings {
 
   Strings(this.locale);
 
-  static Strings of(BuildContext context) => Localizations.of(context, Strings)
+  static Strings of(BuildContext context) => Localizations.of(context, Strings);
 
   static Map<String, Map<String, String>> localizedValues = {
     'en': enMap,
