@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:weatherapp/src/features/presentation/screens/HomeScreen.dart';
 import 'package:weatherapp/src/res/Strings.dart';
-import 'package:weatherapp/src/res/StringsDelegate.dart';
 import 'package:weatherapp/src/res/Themes.dart';
 
 class App extends StatelessWidget {

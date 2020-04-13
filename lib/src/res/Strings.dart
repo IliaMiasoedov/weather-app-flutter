@@ -1,8 +1,21 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:weatherapp/src/error/failures.dart';
 import 'package:weatherapp/src/features/presentation/bloc/State.dart';
 import 'package:weatherapp/src/res/En.dart';
 import 'package:weatherapp/src/res/Ru.dart';
+
+const enLocaleLabel = 'en';
+const ruLocaleLabel = 'ru';
+final localeCodes = [enLocaleLabel, ruLocaleLabel];
+final locales = [
+  const Locale(enLocaleLabel, ''),
+  const Locale(ruLocaleLabel, ''),
+];
+final Map<String, Map<String, String>> localizedValues = {
+  enLocaleLabel: enMap,
+  ruLocaleLabel: ruMap
+};
 
 class Strings {
   //Api key
@@ -21,11 +34,6 @@ class Strings {
   Strings(this.locale);
 
   static Strings of(BuildContext context) => Localizations.of(context, Strings);
-
-  static Map<String, Map<String, String>> localizedValues = {
-    'en': enMap,
-    'ru': ruMap
-  };
 
   String get applicationName {
     return localizedValues[locale.languageCode]['applicationName'];
@@ -52,4 +60,19 @@ class Strings {
     }
     return message;
   }
+}
+
+class StringsDelegate extends LocalizationsDelegate<Strings> {
+  const StringsDelegate();
+
+  @override
+  bool isSupported(Locale locale) => localeCodes.contains(locale.languageCode);
+
+  @override
+  Future<Strings> load(Locale locale) {
+    return SynchronousFuture<Strings>(Strings(locale));
+  }
+
+  @override
+  bool shouldReload(LocalizationsDelegate<Strings> old) => true;
 }
