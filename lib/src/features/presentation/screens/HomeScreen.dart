@@ -33,7 +33,8 @@ class HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(Strings.homePageTitle), actions: <Widget>[popupMenu()]),
+          title: Text(Strings.of(context).homePageTitle),
+          actions: <Widget>[popupMenu()]),
       body: body(),
     );
   }
@@ -50,7 +51,8 @@ class HomeScreenState extends State<HomeScreen> {
     if (state is Error) {
       return Column(
         children: <Widget>[
-          centeredTextWidget(state.message, Dimens.mediumSize)
+          centeredTextWidget(
+              Strings.mapErrorToString(context, state), Dimens.mediumSize)
         ],
       );
     } else if (state is Loaded) {

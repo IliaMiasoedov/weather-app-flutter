@@ -19,17 +19,7 @@ class HomeBloc extends Bloc<String, WState> {
   Stream<WState> mapEventToState(String event) async* {
     yield Loading();
     final result = await useCase(event);
-    yield result.fold((failure) => toError(failure),
+    yield result.fold((failure) => Error(failure: failure),
         (data) => Loaded(data: data));
-  }
-
-  Error toError(Failure failure) {
-    var message;
-    if (failure is ConnectionError) {
-      message = Strings.errorConnection;
-    } else {
-      message = Strings.errorServer;
-    }
-    return Error(message: message);
   }
 }

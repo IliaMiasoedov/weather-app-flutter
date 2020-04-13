@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:weatherapp/src/error/failures.dart';
 
 // (WState - means Widget State)
 abstract class WState extends Equatable {
@@ -21,10 +22,10 @@ class Loaded<T> extends WState {
 }
 
 class Error extends WState {
-  final String message;
+  final Failure failure;
 
-  Error({this.message});
+  Error({this.failure});
 
   @override
-  List<Object> get props => [message];
+  List<Object> get props => [failure];
 }
